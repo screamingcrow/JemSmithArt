@@ -11,6 +11,30 @@ body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  -ms-flex: 50%; /* IE 10 */
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.row {
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE 10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+#virtcent{
+text-align:center;
+}
 </style>
 </head>
 <body>
@@ -31,7 +55,7 @@ body {font-size:16px;}
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
   <img src="images/WhiteLogo_Skaled.png" style="width:5%;height:5%" alt="logo">
   <span>Jemma Smith</span>
 </header>
@@ -48,12 +72,14 @@ body {font-size:16px;}
    <!-- <h1 class="w3-xxxlarge w3-text-red"><b>Showcase.</b></h1>-->
     <hr style="width:50px;border:5px solid indigo" class="w3-round">
   </div>
-  
-  <!-- Contact -->
-  <div class="w3-container" id="contact" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-indigo"><b>Contact.</b></h1>
+  <h1 class="w3-xxxlarge w3-text-indigo"><b>Contact.</b></h1>
     <hr style="width:50px;border:5px solid indigo" class="w3-round">
-    <p>Send me an eamil.	</p>
+   <div class="row"> 
+  <div class="column">
+  <!-- Contact -->
+ <!-- <div class="w3-container" id="contact" style="margin-top:75px">-->
+    
+    <p> Send me an eamil.	</p>
     <form action="/action_page.php" target="_blank">
       <div class="w3-section">
         <label>Name</label>
@@ -69,8 +95,31 @@ body {font-size:16px;}
       </div>
       <button type="submit" class="w3-button w3-block w3-padding-large w3-indigo w3-margin-bottom">Send Message</button>
     </form>  
-  </div>
-
+  <!--</div>-->
+</div>
+	<div class="column">
+		<!--<div class="row">-->
+			<!--<div class="column">-->
+			<!--put half the social media links here -->
+				<img src="images/Linkedin.png" align="left" style="width:10%"><p>Jemma Smith</p>
+				<br>
+				<img src="images/Twitter.png" align="left" style="width:10%"><p>@JemmaSmithArt </p>
+				<br>
+				<img src="images/Instagram.png" align="left" style="width:10%"><p>@ScreamingCrowStudios </p>
+		<!--	</div> -->
+			<div class="collumn">
+			<!-- put the other half here-->
+			<br>
+				<img src="images/Rookies.png" align="left" style="width:10%"><p> JemmaSmithArt</p>
+				<br>
+				<img src="images/ArtStation.png" align="left" style="width:10%"><p> JemmaSmithArt</p>
+				<br>
+				<img src="images/Mail.png" align="left" style="width:10%"> <p style="height: 100%">jemmasmithart@gmail.com </p>
+			</div>
+		<!--</div>-->
+		
+	</div>
+</div>
 <!-- End page content -->
 </div>
 
