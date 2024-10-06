@@ -40,6 +40,38 @@ text-align:center;
 }
 	
 html{scroll-behavior: smooth;}
+
+	.flex-container {
+  display: flex;
+  background-color: #1e1e24;
+}
+
+.flex-container-child {
+border-radius: 25px;
+  background-color: #131316;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  width: 33%;
+  hight: 3000px;
+  text-align: center;
+}
+
+.mini-flex-container{
+display: flex;
+background-color: #131316;
+flex-wrap: wrap;
+flex-direction: row;
+}
+
+.mini-flex-container > div{
+border-radius: 15px;
+margin: 2px;
+  padding: 5px;
+  font-size: 15px;
+
+
+	
 </style>
 </head>
 <body>
@@ -90,6 +122,67 @@ html{scroll-behavior: smooth;}
 		<h1 class="w3-xxxlarge w3-text-indigo"><b>Game Design/Programming Showcase</b></h1>
 		<hr style="width:50px;border:5px solid #20504F;" class="w3-round">
 	</div>
+<div class="flex-container">
+		<div class="flex-container-child">
+			<img src="gifs/TITD-GamePlay.gif" style="width:100%">
+			Trapped In The Deep
+			<div class="mini-flex-container">
+				<div style="background-color: #6D9f71">University Project </div>
+				<div style="background-color: #1761ef">Unity 3D</div>
+				<div style="background-color: #d84797" >C#</div>
+				<div style="background-color: #2E2d4d">Solo Project</div>
+				<div style="background-color: #3abeff">Programming</div>
+				<div style="background-color: #093a3e">Blender</div>
+				<div style="background-color: #820933">3D Modeling</div>
+				<div style="background-color: #824670">Animation</div>
+				<div style="background-color: #3aafb9">Maya</div>
+			</div>
+			<p>
+				A short game that sees players solving puzzles and fighting monster to escape fromm an underwater laboratory.
+			</p>
+			<a href="TITD.html">
+				<button style="border-radius: 25px;"class="w3-button w3-block w3-padding-large w3-indigo w3-margin-bottom">See More</button>
+			</a>
+		</div >
+		<div class="flex-container-child">
+			<img src="images/Untitled.mp3-ezgif.com-optimize.gif" style="width:100%">
+			Quiver
+			<div class="mini-flex-container">
+				<div style="background-color: #6D9f71">University Project </div>
+				<div style="background-color: #1761ef">Unity 3D</div>
+				<div style="background-color: #d84797" >C#</div>
+				<div style="background-color: #3abeff">Programming</div>
+				<div style="background-color: #093a3e">Blender</div>
+				<div style="background-color: #820933">3D Modeling</div>
+				<div style="background-color: #824670">Animation</div>
+				<div style="background-color: #3aafb9">Maya</div>
+			</div>
+			<p> 
+				A 2.5D Puzzle Platformer that features archury mechanics.
+			</p>
+			<a href="QVR.html">
+			<button style="border-radius: 25px;"class="w3-button w3-block w3-padding-large w3-indigo w3-margin-bottom">See More</button>
+			</a>
+		</div>
+		<div class="flex-container-child">
+			<img src="gifs/HBike.gif" style="width:100%">
+			HoverBike Demo
+			<div class="mini-flex-container">
+				<div style="background-color: #1761ef">Unity 3D</div>
+				<div style="background-color: #d84797" >C#</div>
+				<div style="background-color: #3abeff">Programming</div>
+				<div style="background-color: #2E2d4d">Solo Project</div>
+				
+				
+			</div>
+			<p>
+				An in-development demo for a vheicle based adventure game.
+			</p>
+			
+		</div>  
+	</div>
+
+	
 	<section id="Portfolio">
 	<!-- Rendering Header -->
 	<div class="w3-container" style="margin-top:80px" id="showcase">
