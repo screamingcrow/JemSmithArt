@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Educatonal Phonics Game Dev Log 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        #MessageBox {
+            height: 200px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        #virtcent {
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .flex-container-child {
+            border-radius: 25px;
+            background-color: #131316;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            max-width: 340px;
+            hight: 3000px;
+            text-align: center;
+        }
+
+        .mini-flex-container {
+            display: flex;
+            background-color: #131316;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+            .mini-flex-container > div {
+                border-radius: 15px;
+                margin: 2px;
+                padding: 5px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-indigo w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><img src="images/JemLogoOpen_White.png" style="width:100%;height:100%" alt="logo"><b><!--Jemma Smith<br>--><br>Game Designer</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="index.html#Portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Portfolio</a>
+            <a href="index.html#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+            <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="DevLogs.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Dev Logs</a>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+        <img src="images/JemLogoOpen_White.png" style="width:15%;height:15%;" alt="logo">
+        <!--<span>Jemma Smith</span>-->
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+        <!-- Code Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-xxxlarge "><b>Educaional Phonics Card Game Dev Log 1 : The Concept</b></h1>
+            <h4>09/02/2026</h4>
+        </div>
+       
+
+        
+            <!-- about Header -->
+            <div class="w3-container"  id="showcase">
+                <h2 class="w3-xxxlarge w3-text-indigo"><b>Analizing Educational Games: </b></h2>
+                <hr style="width:50px;border:5px solid #20504F;" class="w3-round">
+            </div>
+            <p>
+                Videogames are complicated, and they need a way of teaching how to play to players. Mechanics have been taught several ways throughout the years: from manuals to tutorials to tool tips. There are so many methods to teach through games, but much of the learning that happens in games is purely subconscious. After all humans are well adapted to pattern recognition and as such many player will figure out minor things about games just through interacting with the game world, from how many shots it takes to kill an enemy, to what jumps you can make to enemy attacks and how to avoid them. This is all taught to players via repetition. If a player interacts with a system or gameplay loop for long enough, they will start to understand. Gameplay can be designed in such a way to subtly force players to interact with the game systems in a specific way, so that players will notice and make these interactions intentionally in the future. <a href="https://youtu.be/OK4koZJcook?si=Cp3p0mrgcBX_dGjs&t=421" class=" w3-text-indigo">See the AntLion grub in HL2:E2 Developer comentary.</a>  
+                <h3>Challenges of making educational games:  </h3>
+                Games are filled with rules. These rules, when understood by players, allow players to make and execute plans. Some educational concepts (like mathematics) follow these rules strictly, making them perfect candidates for educational games. Unfortunately, the English language is a hodgepodge of several language roots, and the rules of English have several exceptions. This makes phonics a difficult subject to turn into a game. 
+
+                <h2>Types of educational games:  </h2>
+                <h3>Educational automation: </h3>
+                Educational automation games are simply automated versions of traditional educational tools such as worksheets memory games etc. Games are often not engaging to players. Despite being the simplest of the 3 types of educational games it does have some benefits over traditional teaching methods as it allows for immediate feedback.
+                <h3>Games with educational Paint:  </h3>
+                Some educational games are simply a game with an educational coat of paint on it. This form of game is much more engaging when compared to educational automation games, however the educational aspects of it are an afterthought and are often poorly incorporated into game play. The educational material is separate from the core mechanics of the game, unlike in the next form of game. 
+                <h3>Games that happen to be educational:  </h3>
+                the gold standard for educational games are games whose mechanics happen to be academically relevant, unfortunately this kind of educational game is often limited to STEM Fields. Some common examples of this form of game are: Kerbal space program (teaches rocket science, orbital mechanics), Sim City (teaches fanatical and city planning), bridge builder (teaches structural engineering and physics) Balatro (teaches probability and order of operations). This is ideal for educational games as the game is engaging outside of an educational context. The educational elements are inseparable from the gameplay.
+
+            </p>
+            
+            <!-- Game Structures-->
+        <section>
+            <h2 >Game Structures </h2>
+            <p>
+            <h3>Linear:  </h3>
+            <img src = "Images/DevLog_EPCG_1/Structure1.png"  style="width:100%">
+            Linear sees players move through a series of bespoke levels one after another. In the context of an educational experience, each level can act as a lesson. However, linear experiences fall flat for educational programs as each level only needs to be completed once and as such struggles to ensure a robust understanding of content material. 
+
+            <h3>Cyclic: </h3>
+            <img src = "Images/DevLog_EPCG_1/Structure2.png"  style="width:100%">
+            cyclic game structures involve players repeatedly replaying the same level over and over again to achieve mastery of that specific level. This format is a much better fit for education when compared to linear experiences as repeated playthroughs help familiarizing players with the mechanics through repetition. However the format is drawn back by the incentive to players replaying levels is purely up to the player, this means if a player is not thoroughly engaged by the program (which is often the case when dealing with educational games) the player has no reason to play the levels more than once. The format is also prone to memorization/ optimization: this means that it is likely that players will memorize the most optimal path through a level, prioritizing memorization over mastery of the mechanics. 
+            Here are some of the benefits of cyclic games; 
+            <br>
+            -Repetition allows for further understanding of mechanics 
+            <br>
+            <a href="https://www.youtube.com/watch?v=xi8ZT2h8z9k&pp=ygUPZ210ayBuZW9uIHdoaXRl" class=" w3-text-indigo">Here is a video on the benefits of cyclic games.  </a>
+            <br>
+            <a href="https://www.youtube.com/watch?v=5N4U46QOyeA&pp=ygULaGl0bWFuIGdtdGs%3D" class=" w3-text-indigo">Here is another video.    </a>
+            
+            <h3>Linear:  </h3>
+            <img src = "Images/DevLog_EPCG_1/Structure3.png"  style="width:100%">
+            Rogue style games are a format where players are given a task, they will attempt a “run” to reach this goal and acquire upgrades along the way. Upon failing the run all abilities and progress towards the goal is lost. Each run is subjected to randomness that makes each run distinct. The abilities / upgrades often incentivize prioritization of differing playstyles, this incentivizes mastery offer all aspect of the mechanic, rather than focusing on one strategy. Rogue style of games would be the best format to use in an educational experience.  
+            <br>
+            The rogue style game also features several pros for an educational experience:
+            <br>
+            -As no upgrades and abilities are carried over from one run to another, the need for progression tracking/ saving/ accounts is not needed to be implemented. 
+            <br>
+            Each run is designed to last 10-20 min so several run attempts can be done in a computer lab session. As well as a reasonable time spent at home learning.  
+            <br>
+            Randomized runs incentivize experimentation with various parts of the content material. 
+
+            </p>
+        </section>
+
+        <!--Designing for the demographic -->
+        <section>
+        <h2>Designing for the target audience:</h2>
+        <p>
+        When designing a game, it is important to design the demographic. For instance, the age demographic of LEM Phonics (children aged 4-10) has grown up in the digital world with devices constantly fighting for their attention. From coco Mellon and dancing fruit videos to the short form video formats of TikTok and YouTube shorts, games that are often played by Gen Alpha include: Fortnite, ROBLOX, Mario games and Minecraft as  evidenced by <a   class=" w3-text-indigo" href="https://www.demandsage.com/generation-alpha-stats/" > this Statistic.<a/>
+        <br>
+
+
+        
+        
+        As the game will need to be designed for such a young audience with differing technical and game literacy, both from students and educators.  
+        <br>
+        Educational experiences should be equally engaging to a young audience as one of these other games. But how do we do this? The key to making a topic like phonics more engaging is less in the gameplay but rather by making interactions satisfying, of what game designers refer to as <a   class=" w3-text-indigo" href="https://www.youtube.com/watch?v=Fy0aCDmgnxg&list=PL2gEO25pE6dqsPxgajrZSuqutgzZSjnk5" >“Juice”</a> . Juice in a game describes the process of adding supplementary animations/ effects to actions in order to make them more engaging.
+        <h3>The design complexity of the game:  </h3>
+        As the game is designed to target several age groups with wildly differing understandings of the material and technical literacy, the game will need several levels of difficulty in both game play and different interaction complexity.
+        </p>
+        </section>
+
+        <!--Designing for the demographic -->
+        <section>
+        <h2>Game Pitch  </h2>
+        <p>
+        The final project should have several game modes to accommodate several levels of digital literacy and understanding of Phonics. 
+        <h3>The Card Design: </h3>
+        <div class="row">
+            <div class="column" style="flex:33%">
+                <img src = "Images/DevLog_EPCG_1/Card.png"  style="width:100%">
+            </div>
+            <div class="column" style="flex:66%">
+                <p>    
+                the card design features the Phonic letters displayed predominantly oh the front of a square card. A line of pips going down vertically along the left edge of the card. The quantity of pips, is derived by how many sounds the phonic has. The highlighted pip is displays which sound is currently selected.
+                </p>
+            </div>
+        </div>
+        <h4>variables of the card: </h4>
+        -String: Phonic Letters (the letters displayed on the card) 
+        <br>
+-AudioClip[]: Sonds (the audio clips stored in an array) 
+<br>
+-String[]: Phonetic Sound (either a phonetic spelling or the phonetic alphabet version of the sound) 
+<br>
+-String[]: Exemplar Words (an example word that the sound appears in)(optional) 
+<br>
+-Material: Phonic Class Material (single phonograms multiple phonograms, ect all have a different card backing to help distinguish between them) 
+<h3>The Card Drawer  </h3>
+       In some experiences (card viewer, word maker) the player will have access to all the cards in the game. To achieve this we will use the “card drawer” a pop up menu that allows players to scroll through all the cards, once a card is selected the card drawer will collapse allowing players to add it to the scene.
+ </p>
+        </section>
+
+        <section>
+        <h2>The Experiences: </h2>
+        <p>
+
+        <h3>Card viewer:  </h3>
+        The simplest of the experiences featuring a collection of cards with each of the phonograms, players can select a card and move it onto a card slot. This card slot has controls along the side for changing the selected sound and playing the sound. 
+        <br>
+        This is intended to teach the phonics and can be used in guided learning or solo experimentation.
+        <h3>Card Test:   </h3>
+        A sound is played and players need to select the card (out of 3 –5 cards) that plays that sound.
+        <h3>Word Maker:   </h3>
+        Players add any cards onto card slots to spell words. A button on the side will play each audio clip so the game will say the word. (to avoid the system spelling bad words the final string will be compared to a “badWords.txt” file. If a word from this list is detected the game will return the cards to the card drawer) 
+        <h3>The Game (as yet unnamed)   </h3>
+        A rogue style mode where players play words using phonics in order to score points to reach a threshold point. If a player is unable to reach the threshold score in a round the run is over and the player will need to start a new run.  to make the game more interesting, this experience will feature modifier cards that will alter the score. Modifier cards could, for instance, give double points if the word contains a Successive Seventeen Phonogram. These modifier cards incentivize players to modify how they play in order to increase the score. 
+        <br>
+        This experience is greatly influenced by Balatro and it will act as the general framework for this experience. 
+        </p>
+        </section>
+
+
+
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}</script>
+
+</body>
+</html>
