@@ -315,9 +315,7 @@
                     Below is some rough code to define how the images will be changed as the cursor moves around the screen. A total of 36 images is loaded in a singular environment. This allows for 9 different camera positions and 4 lighting states for each (each ( total darkness, dimly lit, moderately lit, and brightly lit). There are 9 arrays, each containing 4 images (one for each of the lighting states). Which image from the array is decided by the “light Level” variable. 
                     <!--<img src="images/DevLog_PD-Horror_1/Psudocode.png" style="width:100%">-->
 					
-				  <pre>
-						<code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);>
-							<span>
+				  <pre><code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
 function enviromentParalaxCalcAndDraw()
 	--backgroundImage: draw(0,0)
  	 if(cursorDistanceFromMidY <= -75)then print("a")
