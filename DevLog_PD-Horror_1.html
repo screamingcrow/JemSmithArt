@@ -313,8 +313,36 @@
                     </div>
                     Below is some rough code to define how the images will be changed as the cursor moves around the screen. A total of 36 images is loaded in a singular environment. This allows for 9 different camera positions and 4 lighting states for each (each ( total darkness, dimly lit, moderately lit, and brightly lit). There are 9 arrays, each containing 4 images (one for each of the lighting states). Which image from the array is decided by the “light Level” variable. 
                     <img src="images/DevLog_PD-Horror_1/Psudocode.png" style="width:100%">
+					<div style="display: block; overflow-x: auto; background: rgb(40, 40, 40); color: rgb(235, 219, 178);">
+				  <pre>
+						<code>
+							<span>
+						function enviromentParalaxCalcAndDraw()
+   						 --backgroundImage: draw(0,0)
+
+ 							   if(cursorDistanceFromMidY <= -75)then print("a")
+									if cursorDistanceFromMidX < -100 then my3c_array:draw( 0, 0 )end
+									if cursorDistanceFromMidX < 100 and cursorDistanceFromMidX > -100 then my3b_array:draw( 0, 0 )end
+									if cursorDistanceFromMidX > 100 then my3a_array:draw( 0, 0 )end
+								end
+								if(cursorDistanceFromMidY >= -75 and cursorDistanceFromMidY <= 75)then print("b")
+									if cursorDistanceFromMidX <= -100 then my2c_array:draw( 0, 0 )end 
+									if cursorDistanceFromMidX <= 100 and cursorDistanceFromMidX > -100 then my2b_array:draw( 0, 0 )end
+									if cursorDistanceFromMidX >= 100 then my2a_array:draw( 0, 0 )end
+								end
+								if(cursorDistanceFromMidY >= 75)then print("c")
+									if cursorDistanceFromMidX < -100 then my1c_array:draw( 0, 0 )end
+									if cursorDistanceFromMidX < 100 and cursorDistanceFromMidX > -100 then my1b_array:draw( 0, 0 )end
+									if cursorDistanceFromMidX > 100 then my1a_array:draw( 0, 0 )end
+								end
+							end
+
+							</span>
+						</code>
+					</pre>
+				</div>
                     The final result of this approach provided the desired effect; however, its motion was in large snapping jumps between image. This is the result of only having 9 images. The difference between the images could be minimized by rendering each position at a less extreme angle. This comes with the downside of the parallax effect becoming less noticeable. It is also possible to render each image a larger resolution and have them slide to make transitions less noticeable, however this comes with the downside of requiring more memory, but it may allow for the conservation of the parallax effect. 
-                    <img src="images/DevLog_PD-Horror_1/fps.gif" style="width:100%">
+                    <img src="images/DevLog_PD-Horror_1/fps2.gif" style="width:100%">
                     Givin the hardware of the playdate console which would limit us to 16mb of memory: having 9 separate full screen images (400 x 240 px each = 0.012mb per image) means we would be using 0.108 mb on a set of 9 images and 0.432mb per full environments including the proposed 4 lighting states. This is compared to using 1 larger 500 x 340 px (0.015mb per image) for each lighting state and sliding it around as was done to create parallax on the character. This method would sacrifice parallax effect for smoother motion and still retain the high level of detail provided by prerendering the environments, it also would only use 0.06 mb for a full environment with 4 lighting states as opposed to the 0.432mb of the 9 images array method. As such sliding a larger image around is the likely solution to creating parallax in a shooting gallery style combat, if that is the direction the project follows. 
                     <a href="https://www.omnicalculator.com/other/image-file-size" class=" w3-text-indigo"> here </a>is the website we used to calculate image sizes at 1-bit color depth.
                 </p>
