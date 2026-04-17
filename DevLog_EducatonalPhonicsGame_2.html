@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Educatonal Phonics Game Dev Log 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/dark.css">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        #MessageBox {
+            height: 200px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        #virtcent {
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .flex-container-child {
+            border-radius: 25px;
+            background-color: #131316;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            max-width: 340px;
+            hight: 3000px;
+            text-align: center;
+        }
+
+        .mini-flex-container {
+            display: flex;
+            background-color: #131316;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+            .mini-flex-container > div {
+                border-radius: 15px;
+                margin: 2px;
+                padding: 5px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-indigo w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><img src="images/JemLogoOpen_White.png" style="width:100%;height:100%" alt="logo"><b><!--Jemma Smith<br>--><br>Game Designer</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="index.html#Portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Portfolio</a>
+            <a href="index.html#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+            <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="DevLogs.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Dev Logs</a>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+        <img src="images/JemLogoOpen_White.png" style="width:15%;height:15%;" alt="logo">
+        <!--<span>Jemma Smith</span>-->
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+        <!-- Code Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-xxxlarge "><b>Educaional Phonics Card Game Dev Log 2: Creating the Cards</b></h1>
+            <h4>23/03/2026</h4>
+        </div>
+       
+
+        
+            <!-- about Header -->
+            <div class="w3-container"  id="showcase">
+                <h2 class="w3-xxxlarge w3-text-indigo"><b>The project so far: </b></h2>
+                <hr style="width:50px;border:5px solid #20504F;" class="w3-round">
+            </div>
+            
+            <p>
+              Over the past few months, the project has made large progress. This development log will discuss the creation of the card system, the phonics specific mechanics created so far, and the next steps for the project. 
+             
+              <h2>The Card System: </h2>
+              I took it upon myself to make the card system from scratch within unity. The basic functionality of the card works in 2 parts: the cards themselves and the raycast mouse. The cards themselves are planes within 3D world space. These cards are moved around and interacted by the raycast mouse system, which converts screen cursor position to world position in order to correctly interact with the cards and move them around the screen. Despite being rendered in 3d space it is supposed to look 2D as such it is rendered with an orthographic camera, and all models will use unit materials. Additionally, each card has a raycast downwards to detect card slots which allow us to place cards and have them snap to a grid. 
+              <br>
+              To make the cards' movement feel better, a slight delay is added to movement, with the card movement speed slower than that of the cursor and multiplied by the distance to the cursor. This results in cards that slow down as they reach the cursor. A tilting effect was also added to the card by editing the rotation of the card plane to ‘look at’ an empty above the cursor’s world space position. A simple shadow was also added to the cards by using a second plane with a dark semi-transparent material to act as a physical shadow that is moved between 2 positions depending on if the card is currently being held. These added visual effects have added a lot in terms of game feel and visual complexity at such an early point in the project. 
+              <br> 
+              <img src = "images/DevLog_EPCG_2/Cards1.gif"  style="width:100%">
+               This gif Showcases the basic card behavior, the camera behavior and the card snapping to a card slot.
+              <br>
+              The design of the phonics card has not been altered too drastically from the mockup seen in Dev Log 1. The most drastic change has been the addition of a 6th pip that was required for the ‘ough’ phonic as it is the only one with 6 sounds. These pips are created by planes stacked on top of the main card plane. 
+              <img src = "images/DevLog_EPCG_2/Cards2.gif"  style="width:100%">
+
+              <h2>Card Data : </h2>
+              To avoid having over a hundred different card prefabs, one for each phonic, I found it necessary to make a more sustainable and robust solution. This was my first time using scriptable objects instead of just monobehvior scripts. The phonics card data contains a string of the phonic which is used to display on the card, a second string that is used for behind the scenes phonetical checking for later in the project, the material to be used on the main card plane. An array of sound clips is also used, and this holds all of the audio that the card needs, each audio clip being one of the sounds that phonic can make. The length of the sound clip array is used to find the number of sounds that the phonic can make; this is used on the card to decide how many pips are active/ inactive.  
+
+              <h2>Using The Card Data:  </h2>
+              To use the card data is pretty simple: the card object will need the <code>phonicsCardBeh </code> script where it will take the card data and apply it to the card on start. The phonic specific card behavior is sperate to the main card behavior script because I'm also using the card system in another project. This card data can also be accessed by special ‘card slots’ so the phonic letters and play audio clip (not yet implemented). In gameplay, players can double click on a card to change the active sound. The phonic cards' active sound is indicated by which pip is selected. If no pips are selected, then the card is silent. 
+              <!-- put code here -->
+              <br>
+              This is the <code style= " background:#131316;">PhonicsCardData</code> script,
+               <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+ 
+[CreateAssetMenu(menuName = "Phonics Card Data")]
+
+public class PhonicsCardData : ScriptableObject
+{
+    //[field: SerializeField] public Sprite Sprite {get; private set; }
+    [field: SerializeField]	public string PhonicsLetters {get; private set; }
+    [field: SerializeField]	public string[] PhoneticSpelling{get; private set; }
+    //[field: SerializeField]	public int NumberOfSounds {get; private set; }
+	[field: SerializeField] public AudioClip[] AudioClips;
+	[field: SerializeField] public Material cardMaterial;
+}
+ </span></code></pre>
+               And this snippet from <code style= " background:#131316;"> PhonicsCardBeh </code>
+               <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+public void SetUpCard()
+	{
+		if(myCardData != null)
+		{
+			//assemble card
+			myRend.material = myCardData.cardMaterial;
+			myTMP.text = myCardData.PhonicsLetters;
+			numbOfSounds = myCardData.AudioClips.Length ;
+			myNumbTMP.text = numbOfSounds.ToString();
+			//Debug.Log(numbOfSounds);
+			
+			// set up pip planes
+			foreach (Renderer rend in pipPlanes)
+			{
+				//rend.Material
+			}
+			
+			//if(numbOfSounds >= 1) pipPlanes[0].enabled = true;
+			if(numbOfSounds >= 3) pipPlanes[1].enabled = true; else pipPlanes[1].enabled = false;
+			if(numbOfSounds >= 4) pipPlanes[2].enabled = true; else pipPlanes[2].enabled = false;
+			if(numbOfSounds >= 5) pipPlanes[3].enabled = true; else pipPlanes[3].enabled = false;
+			if(numbOfSounds >= 6) pipPlanes[4].enabled = true; else pipPlanes[4].enabled = false;
+			if(numbOfSounds >= 7) pipPlanes[5].enabled = true; else pipPlanes[5].enabled = false;
+			
+			//set current sound
+			currentsound = 1;
+			pipPlanes[0].material = PipEnabled;
+		}
+	}
+ </span></code></pre>
+
+              <h2>Making words:   </h2>
+              <h3>The word manager:  </h3>
+              For both the word maker and game sides experiences of the project I need a system that will read the card data of several phonics cards for a word as an output. the first version of this system didn't use the cads at all as it was built soly to text the mechanic, instead it featured multiple UI text input fields. Their system works by storing the inputs as entries in an array. The content of this string array is then added together and outputted as a single string. Now while this would work as a spelling game, it still has errors that may be caused by the wrong phonic sound being selected. 
+              <br> 
+              Here is some code snippes form the <code style= " background:#131316;"> PhonicsCardSlotArrayAndWordCombiner </code> scritp, this acts as the word manager in this project. there are 3 primary actions that this script does:Collect data from phonics cards, update the current words and joining the strings togeather, and interacting with the database by adding and checking words.
+              <h4> The Variables </h4>
+              <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+              public PhonicsCardSlotBeh[] mycardSlots;
+public ValidWords mywordData;
+public string letterTextFinal;
+public string soundTextFinal;
+public List<string> letterText =  new List<string>();
+public List<string> soundText=  new List<string>();
+int indexNumb;
+	
+public TMP_Text myLetterTextTMP;
+public TMP_Text mySoundTexTMP;
+               </span></code></pre>
+              <h4> Collecting Data From Cards </h4>
+              <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+void CollectDataFromCards()
+    { 
+		//letterText = mycardSlots.Length;
+        foreach (PhonicsCardSlotBeh slot in mycardSlots)
+		{
+			if(slot != null)
+			{
+				if(slot.myCardSlot.hasCard)
+				{
+					letterText.Add(slot.phonicletters);
+					soundText.Add(slot.soundLetters);
+				}
+			}
+		}
+    }
+             </span></code></pre>
+              <h4> Updating Words </h4>
+              <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+void WordUpdate()
+    {
+		letterText.Clear();
+		soundText.Clear();
+        CollectDataFromCards();
+
+        letterTextFinal = string.Join("",letterText);
+		soundTextFinal = string.Join("",soundText);
+        
+		if(myLetterTextTMP != null)
+			myLetterTextTMP.text = letterTextFinal;
+		
+		if(mySoundTexTMP != null)
+			mySoundTexTMP.text = soundTextFinal;
+    }
+              </span></code></pre>
+              <h4> Adding and Checking Words </h4>
+              <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+public void AddData()
+    {
+        mywordData.words.Add(letterTextFinal);
+        mywordData.sounds.Add(soundTextFinal);
+		//marks card data as dirty as to hopefully serialize the data and have it save
+        EditorUtility.SetDirty(mywordData);
+
+    }
+	
+public void checkData()
+    {
+        //check word is valid
+        if (mywordData.words.Contains(letterTextFinal))
+        {
+            //Debug.Log("this word is in the data base");
+            indexNumb = mywordData.words.IndexOf(letterTextFinal );
+            // Debug.Log("word found at this position" + indexNumb);
+
+            if (mywordData.sounds[indexNumb] == soundTextFinal)
+            {
+                Debug.Log("word and sounds are vallid, assign points");
+            }
+            else
+            {
+                Debug.Log("word is correct, but sound is incorrect");
+            }
+
+        }
+        else 
+        {
+            Debug.Log("not a valid word");
+        }
+
+    }
+              </span></code></pre>
+
+              <br>
+              For instance: a player may spell the word ‘tape’ correctly but if the cards have the incorrect sound selected it will be phonetically spelled ‘T1,A1,P1,E1’ where it should be spelled ‘T1,A2,P1,E0”. To resolve this issue of correct spelling but incorrect phonetics, we need to check the word output against a database of both spelling and phonetic spellings. I was unable to find a preexisting resource that had both of these constraints, at least not ones that worked in the LEM Phonics framework that this project is built around. As such, making the database myself is the most viable solution, although very tedious, perhaps the database should be limited to a certain number of words.  
+              <h3>The Database:  </h3>
+              A new scriptable object was made to store words, I originally indented to use 2 string arrays for this, however as i would be adjusting the database's size at runtime, and thus the length of the arrays (arrays are a static length and cannot be changed) i had to use lists instead. When a new word is added to the database, a new entry is added to both lists (one for the spelling one for the phonetic code). This entry can then be cross referenced when checking the spelling of a word. Unfortunately, due to complications in the systems of unity the database would save out of playtime but not when closing the editor, i was able to figure out a solution by marking the data as ‘dirty.’ I am not familiar enough with the inner workings of unity to know what this means, but I am more than pleased that it is in a working state. 
+              <img src = "images/DevLog_EPCG_2/Cards3.gif"  style="width:100%">
+              <br>
+              Checking the words is simply doing this process in reverse; the word manager takes the inputs from a seconded set of input fields and compares it to the existing database. It first checks if the spelled word matches any entries in the database, if a match is found it notes the array address of the entry, and then compares the phonetic input against the database entry of phonetic codes at the same address, if the 2 strings match the word is marked as correct. This system is able to detect words being fully correct (spelling and phonetic), spelled correctly but with incorrect phonetic code and words not being correct. Some concerns have been made regarding how this system will handle Heteronyms: words with the same spelling but different productizations, but this is a a problem to resolve later i development. Having each word needs to be validated against a data base of hand selected should reduce the need for a ‘badWords.txt’ file to reference again and avoid offensive language being used in the program. But this would still be a good safety tool to implement later in development.
+              <img src = "images/DevLog_EPCG_2/Cards4.gif"  style="width:100%">
+              <br>
+              The UI text fields were replaced with the card slot system as development continued. 
+
+              <h2>The project moving forward:  </h2>
+              There is a lot still to do on this project like setting up all of the phonics card data sets, building audio playback into the system, and the creation of the Card Draw. The top row of card slots are used for adding words to the database, the lower row is used for checking the word against the database. 
+            </p>
+
+
+
+            <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+			<script>hljs.highlightAll();</script>
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}</script>
+
+</body>
+</html>
