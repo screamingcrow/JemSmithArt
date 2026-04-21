@@ -175,10 +175,8 @@ using UnityEngine;
 
 public class PhonicsCardData : ScriptableObject
 {
-    //[field: SerializeField] public Sprite Sprite {get; private set; }
     [field: SerializeField]	public string PhonicsLetters {get; private set; }
     [field: SerializeField]	public string[] PhoneticSpelling{get; private set; }
-    //[field: SerializeField]	public int NumberOfSounds {get; private set; }
 	[field: SerializeField] public AudioClip[] AudioClips;
 	[field: SerializeField] public Material cardMaterial;
 }
@@ -195,14 +193,8 @@ public void SetUpCard()
 			numbOfSounds = myCardData.AudioClips.Length ;
 			myNumbTMP.text = numbOfSounds.ToString();
 			//Debug.Log(numbOfSounds);
-			
-			// set up pip planes
-			foreach (Renderer rend in pipPlanes)
-			{
-				//rend.Material
-			}
-			
-			//if(numbOfSounds >= 1) pipPlanes[0].enabled = true;
+
+			//enables pip planes based on how many sounds a card has
 			if(numbOfSounds >= 3) pipPlanes[1].enabled = true; else pipPlanes[1].enabled = false;
 			if(numbOfSounds >= 4) pipPlanes[2].enabled = true; else pipPlanes[2].enabled = false;
 			if(numbOfSounds >= 5) pipPlanes[3].enabled = true; else pipPlanes[3].enabled = false;
@@ -238,7 +230,6 @@ public TMP_Text mySoundTexTMP;
               <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
 void CollectDataFromCards()
     { 
-		//letterText = mycardSlots.Length;
         foreach (PhonicsCardSlotBeh slot in mycardSlots)
 		{
 			if(slot != null)
@@ -256,6 +247,7 @@ void CollectDataFromCards()
               <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
 void WordUpdate()
     {
+		// clears letterText string
 		letterText.Clear();
 		soundText.Clear();
         CollectDataFromCards();
@@ -288,8 +280,7 @@ public void checkData()
         {
             //Debug.Log("this word is in the data base");
             indexNumb = mywordData.words.IndexOf(letterTextFinal );
-            // Debug.Log("word found at this position" + indexNumb);
-
+            
             if (mywordData.sounds[indexNumb] == soundTextFinal)
             {
                 Debug.Log("word and sounds are vallid, assign points");
