@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PD Jackpot Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        #MessageBox {
+            height: 200px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        #virtcent {
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .flex-container-child {
+            border-radius: 25px;
+            background-color: #131316;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            max-width: 340px;
+            hight: 3000px;
+            text-align: center;
+        }
+
+        .mini-flex-container {
+            display: flex;
+            background-color: #131316;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+            .mini-flex-container > div {
+                border-radius: 15px;
+                margin: 2px;
+                padding: 5px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-indigo w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><img src="images/JemLogoOpen_White.png" style="width:100%;height:100%" alt="logo"><b><!--Jemma Smith<br>--><br>Game Designer</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="index.html#Home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="index.html#Portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Portfolio</a>
+            <a href="index.html#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+            <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="DevLogs.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+        <img src="images/JemLogoOpen_White.png" style="width:15%;height:15%;" alt="logo">
+        <!--<span>Jemma Smith</span>-->
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+        <!-- Code Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-xxxlarge w3-text-indigo"><b>Playdate Jackpot Game : The DevLog</b></h1>
+            <hr style="width:50px;border:5px solid #20504F;" class="w3-round">
+            <h4>21/05/2026</h4>
+        </div>
+                <h2 >The project and its goals: </h2>
+               
+            <p>
+                Over the past few days I worked on a project as part of a <a href="https://itch.io/jam/jmc-holiday-jam"  class=" w3-text-indigo">game jam that my uni was holding </a>that was open to alumni. 
+                <br> <br>
+                The theme of this game jam was “Jackpot” and being a fan of pinball one of my first ideas was to make a pinball game. For this theoretical game I imagined that you would take the roll of a wizard named jack and players have to collect ingredients for a potion. After completing a small goal to find an ingredient, you would have to lock the ball in the cauldron (or pot), doing this three times would start multi-ball. During multi-ball specific shots would be lit for a jackpot. The idea was ambitious, yes but I also believe that a pinball table would make for a prime idea for a solo/ small team protect as only a few models are used, with a focus on programming over art, but still allows for team size to be scaled during the projects needs.
+                <br>
+
+
+            </p>
+            
+            <h2>My First Plan: Pinball</h2>
+           <p>
+            I wanted to make this project in Unreal Engine 5 as I don’t have any UE5 projects in my portfolio, despite have experience with it. I started by creating some blueprints for the ball and table, this was easy as they are simply physics objects. After modelling a flipper using the built in modelling mode I tried programming the flipper…. This is when I started having issues. As I’m still very new to UE5 and I’ve not had to make new blueprint that reads controller inputs. I spent 3 hours figuring this out. And once I had finally gotten the flippers to work the physics where not behaving as intended. I had anticipated physics issues due to the high speeds of a pinball and the flippers, which would cause problems regarding collision interpretation. In addition to this, the ball lost momentum when it shouldn’t, the ball bounce was wrong, and the friction with the table was completely wrong. I wonder if these issues were caused by the scale: I had modelled everything to be correctly scaled to real life pinball, as I assumed this would create the most accurate experience, perhaps scaling the project up would allow me to more accurately dial in the game feel. 
+            <img src = "images/DevLog_Jackpot/pinball.gif"  style="width:100%">
+            By this time day 1 of the jam was coming to an end, and I decided that I wouldn’t be able to fix the physics in time AND make the rest of the game on top of it. I would like to start this project again some time when I have a deeper understanding of UE5 physics. I still believe that making a pinball game would work well as a game jam project, perhaps I should spend some time in the future developing the components, a pinball platform. That way I could quickly sketch up a new pinball design.
+
+           </p>
+        
+           <h2>The Second Plan: Playdate Slots</h2>
+           <p>
+           My back up plan had been to make a slot machine simulator for the Playdate Console, using the crank to pull the lever. This project was attractive to me as by this point in the game jam I only had 2 days left so a project that required minimal art assets at a low resolution and fidelity was ideal for my skill set. This project also allowed me to learn more about developing for the Playdate as I want to gain more expedience with it before working on my Playdate horror Game.
+           <img src = "images/DevLog_Jackpot/HomeMenu_Sprite.png"  style="width:100%">
+           As the Playdate doesn’t use a game engine my first step was to set up a “game mode scene” system in which each frame the game queries itself to determine the game mode, and performs the corresponding update function, I’m aware this is horrible in terms of performance, I felt it was excusable for such a small project. The next major issue was getting sprites to work, I had previously been drawing images to screen each frame, so the use of sprites was new to me, however I found it was surprisingly simple, as I’m able to move it by specified move amounts and did not need to calculate its new position manually. Changing the image on the sprite and enabling/disabling the sprite was also pleasantly easy and most of the project is one set of sprites being disabled while another set get enabled.
+           <br> <br>
+            The primary mechanic of the sot machine is the wheels, I started by creating and dithering a gradient in Photoshop to create the illusion of the wheels being a physical element that goes back into the machine, these remained on screen for every frame, I only needed to render this once as I could reuse the wheel sprite for each of the 3 wheels. The next step was to add the wheel icons I made a new sprite in the centre of each of the wheels, then I made a <code> StartSpin </code> function that disables each of the 3 sprites and invokes 3 functions with a slight delay between them, each of these functions “stops” one of these wheels, by enabling the relative sprite and setting its image to one from an image array as chosen by a random number generator.
+            
+            <img src = "images/DevLog_Jackpot/FishJackpot.gif"  style="width:100%">
+            
+            The rest of the project was just expanding functionality, adding the sprites above and below the primary sprites, spinning spear sprites, and the menus. One of my favourite additions is the “bounce back” effect I made for the wheel stopping. Upon a wheel stopping the sprite is drawn 6 pixels below the final position, 0.3 of a second later and the sprites are moved to their final position. This creates the implied follow through movement of the fast spinning wheels with out the need to program any real spinning.
+            <img src = "images/DevLog_Jackpot/FushJackpot2.gif"  style="width:100%">
+            This is screen capture of the final gameplay.
+           </p>
+
+           <h2>Optimization of the Rendering Pipeline</h2>
+           <p>
+            One of the most important lessons I’ve learned in doing this game jam was the refining of a 3D render to dithered sprite pipeline. 
+            <br>
+            My previous workflow required me to render out a frame in blender, save the frame as an image, then import this image to Photoshop, apply the dither effect, clean up the alpha channel (if needed), then exporting the final image.
+            <br><br>
+            This workflow had several drawbacks: <br>
+            - The multi-step nature meant that making any more than one sprite was tedious <br>
+            - Revision of the 3D render would require back and forth between programs<br>
+            - Saving and re-saving files was tedious and required clean up after the process was complete<br>
+            - The dithering sensitivity in Photoshop is fixed, requiring unneeded iterations to produce one sprite
+
+            <br><br>
+            As part of the project I have several jackpot animations, with as many as 50 frames, while not a lot it showed the weaknesses in this workflow.
+            <br><br>
+            I found a YouTube Video that instructed how to make a dithering effect for blender using blenders compositing nodes. This fixes all issues with the issues with the previous workflow. Now I can refine the image and see the dithered effect in editor, change the dithering sensitivity, and I can just render out an animation and the dithering effect will automatically be applied.
+            <img src = "images/DevLog_Jackpot/Nodes.png"  style="width:100%">
+            This is by far the most important thing I’ve worked on in this project and will be used extensible in my horror game I want to work on in the future.
+
+            </p>
+
+            <h2>Conclusion:</h2>
+            <p>
+            In conclusion I’m not supper happy with the project its self, but I am happy with the stepping stones I’ve laid for the Playdate horror game. I hope to participate in future game jams.
+            <br><br>
+                Special thanks to <a href="https://linkbarbour.wixsite.com/linkbarbour"  class=" w3-text-indigo">Link Barbour</a> for assisting in creating the win screens. 
+
+            </p>
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}</script>
+
+</body>
+</html>
