@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dev Log: Moog Card Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/dark.css">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        #MessageBox {
+            height: 200px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        #virtcent {
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .flex-container-child {
+            border-radius: 25px;
+            background-color: #131316;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            max-width: 340px;
+            hight: 3000px;
+            text-align: center;
+        }
+
+        .mini-flex-container {
+            display: flex;
+            background-color: #131316;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+            .mini-flex-container > div {
+                border-radius: 15px;
+                margin: 2px;
+                padding: 5px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-indigo w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><img src="images/JemLogoOpen_White.png" style="width:100%;height:100%" alt="logo"><b><!--Jemma Smith<br>--><br>Game Designer</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="index.html#Home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="index.html#Portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Portfolio</a>
+            <a href="index.html#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+            <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="DevLogs.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Dev Logs</a>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+        <img src="images/JemLogoOpen_White.png" style="width:15%;height:15%;" alt="logo">
+        <!--<span>Jemma Smith</span>-->
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+        <!-- Code Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-xxxlarge w3-text-indigo"><b>Moog circuitous connections Dev Log </b></h1>
+            <hr style="width:50px;border:5px solid #20504F;" class="w3-round">
+            <h4>29/04/2026</h4>
+        </div>
+                <h2 >The project and its goals: </h2>
+               
+            <p>
+                As a side project to my Phonics card game i have also been working on a digitized version of Moog Circuits Connections: a card game built to encourage patching explorations with the family of Moog semi-modular synthesizers, specifically those featured in the Moog sound studio 3 (Mother-32, Drummer From Another Mother, and Subharmnicon). This project was made alongside the Phonics card game and served as testing grounds for the card system. The scope of this project was to recreate the origonal cards as well as creating my own new cards for other semi Moog modular synths (Grandmother, Matriarch, Mavis, Labyrinth, and Sepctravox) in addition to creating cards i also wanted to incorporate some different game mode, although the scope of the game was later changed to limit this to only two game modes. 
+
+
+
+            </p>
+            
+            <h2>Game Art:</h2>
+           <p>
+            The art for the original card game and box art was done by artist <a href="https://philiplindeman.com/">Philip Linderman</a>, who also did art for the packaging manuals and other components of Moog sound studio accessories. I took inspiration from both the art from his work on other Moog products and is working in general to drive the look and colors used in the project. I used this inspiration to come up with some thumbnails of how the main menu could look. Unfortunately, as I am predominantly a programmer and 3D artist and as such would struggle in creating 2D art for the game, thus I decided that most of the menus would be limited in their art. 
+        
+           </p>
+
+        
+           <h2>The Cards</h2>
+           <p>
+          The art for the cards started with a scan of the original card I found online. Using these cards as reference I recreated them in adobe illustrator to the best of my abilities, I was able to change which output/inputs and cables would be active/unactive and all that needs to be done is to change the name of the given patch point. Using this file template I was able to create all the cards needed. Recreating the existing card designs was easy, but creating new cards proved more of a challenge than I initially anticipated. Choosing a new color for the cards was easy, for the first few card sets, however towards the end I found I was running up against a wall as I had used most hues, and I was unable to rely on saturation differences to differentiate instrument types as the established style requires the instrument color to be bright. Even in the final game I feel that the matriarch and mavis colors are a bit too similar when separate, although they are different enough to be able to tell between them when placed next to each other.
+          <br> <br> 
+          Choosing which inputs/outputs to have on each card was difficult to choose, i constantly had to ask myself “what would make a patch more interesting?” and “what are the key features of this synth that i want to highlight?”. A challenge made more difficult by my owning only 3 of the 8 instruments that are featured in the app. 
+            <br> <br>
+            Ive also found some what of a flaw in the concept of the base game (or perhaps I'm just not as familiar with modular synthesizers as I think I am). There are 3 types of signals that the synths process:
+            <br>
+            - Control voltages (CV): a voltage that modulates a destination as the input signal fluctuates, this is the most versatile and has the most notable affect on the final sound. CV is like using the signal of an input source to automatically turn a knob on the panel. 
+            <br>
+             - Audio sources, this is a high frequency signal that is within human hearing, this is the sound that players will hear. 
+            <br>
+            - Triggers: when a input signal crosses a threshold an “event” occurs. E.G an envelope being triggered by a key press
+            <br> <br>
+            Ideally a CV output will go into a CV input and so on. Some times mixing signals can provide interesting effects, such as an audio source modulating an oscillator CV input creates frequency modulation (FM) synthesis.  but inputting a trigger or CV into an audio input means the output wont produce an audible output. This problem is resolved by having the different game modes, specifically the multi card start game mode allows for players to choose to place a card to where in the patch they believe it to be most useful. 
+            <img src="images/DevLog_Moog/Cards1.png" style="width:100%">
+           </p>
+
+           <h2>Development </h2>
+           <p>
+           I wanted the game to be accessible to anyone with a Moog modular synth, as such the project needed to allow users to choose what cards were used in game. This provides the benefit of allowing people who only own one of these synths to play. The Instrument select system works off a series of Booleans that define the selection of a synth, and an array for each of the instruments that holds the cards for that instrument. On the start of the game the deck manager adds the cards for the selected instruments to a list called deck (the order of this deck is also randomized at this point). Then when a card is drawn a card is instantiated, using the card data from the index 0 point of the list, then this card data is removed from the list. Adding a card back into the deck works in much the same way, only data is added to the deck list before destroying the card object.
+            <br>
+            <br>
+            The following code handles the adding of cards to the players deck. 
+            </p>
+            <pre><code class="language-cs"  style= " background:#131316;" color: rgb(256, 256, 256);><span>public InstramentSelect myISelect;
+	
+public List<CardData> fullDeck;
+	
+#region card lists
+public List<CardData> genericCards;
+public List<CardData> m32Cards;
+public List<CardData> dfamCards;
+public List<CardData> subHCards;
+public List<CardData> LabCards;
+public List<CardData> sVoxCards;
+public List<CardData> mavisCards;
+public List<CardData> grandMCards;
+public List<CardData> matriarchCards;
+#endregion
+
+//the CheckAddableCards function is called on start, using bools from the myISelect object
+public void CheckAddableCards()
+{	
+	if(myISelect != null)
+	{
+		//checks the selected instraments and adds the relevent cards to the deck.
+		if(myISelect.GenericSelected)AddCardsToDeck(genericCards);
+		if(myISelect.M32Selected)AddCardsToDeck(m32Cards);
+		if(myISelect.DFAMSelected)AddCardsToDeck(dfamCards);
+		if(myISelect.SubHSelected)AddCardsToDeck(subHCards);
+		if(myISelect.LabSelected)AddCardsToDeck(LabCards);
+		if(myISelect.SVoxSelected)AddCardsToDeck(sVoxCards);
+		if(myISelect.MavisSelected)AddCardsToDeck(mavisCards);
+		if(myISelect.GrandMSelected)AddCardsToDeck(grandMCards);
+		if(myISelect.MatricarchSelected)AddCardsToDeck(matriarchCards);
+			
+	}
+}
+	
+//add card(s) to the main deck list
+public void AddCardsToDeck(List<CardData> CardsToAdd)
+{
+	//adds  relevent cards to deck
+	fullDeck.AddRange(CardsToAdd);
+}
+</span></code></pre>
+
+    <h2>Gameplay</h2>
+    <p>
+    The game play for this experience is very simple, as players just draw cards and place them on card slots, with the intention that players will recreate the new patch connetion on their physical synthesizers. This experience is more of a suggestion/ new way to explore hardware than a game, players are even recommended to ignore suggested patches and follow what sounds nice to them. 
+    <img src="images/DevLog_Moog/GamePlay.gif" style="width:100%">
+    </p>
+
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+
+           
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}</script>
+
+</body>
+</html>
