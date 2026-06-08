@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DevLog PD Horror 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        #MessageBox {
+            height: 200px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        #virtcent {
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .flex-container-child {
+            border-radius: 25px;
+            background-color: #131316;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            max-width: 340px;
+            hight: 3000px;
+            text-align: center;
+        }
+
+        .mini-flex-container {
+            display: flex;
+            background-color: #131316;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+            .mini-flex-container > div {
+                border-radius: 15px;
+                margin: 2px;
+                padding: 5px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-indigo w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><img src="images/JemLogoOpen_White.png" style="width:100%;height:100%" alt="logo"><b><!--Jemma Smith<br>--><br>Game Designer</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="index.html#Home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="index.html#Portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Portfolio</a>
+            <a href="index.html#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+            <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="DevLogs.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+        <img src="images/JemLogoOpen_White.png" style="width:15%;height:15%;" alt="logo">
+        <!--<span>Jemma Smith</span>-->
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+        <!-- Code Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-xxxlarge w3-text-indigo"><b>Playdate Horror Game Dev Log 2: Project Pitch</b></h1>
+            <hr style="width:50px;border:5px solid #20504F;" class="w3-round">
+            <h4>8/06/2026</h4>
+        </div>
+                <h2 >The project and its goals: </h2>
+               
+            <p>
+                For this project I want to make a survival horror style game for the Playdate console. I will be loosely theming this game to a previous project I’ve worked on called <a href="TITD.html" class="w3-text-indigo">Trapped in the deep.</a> The story will see players waking up in an underwater laboratory trying to escape by solving puzzles, unlocking areas and fighting strange monsters. As for the scope of the project: I want to build a small 2-3 hour experience consisting of 2D exploration (similar to the Pokemon games), 3rd person shooting-gallery style combat and bespoke object interactions.
+
+            </p>
+            
+            <h2>The Structure and Gameplay Loop:</h2>
+            <p>
+                the structure of the game will be that of a metroidvania, players will traverse areas of the lab multiple times, slowly expanding the exorable aria, as they unlock doors with keys and passwords.
+                <br>
+                During exploration segments players will roam an environment build in pulp, once this is complete this will be converted to lua. Items found in this “overworld” will affect 3rd person shooting moments being the main source of ammo and health regeneration.
+                <img src="images/DevLog_PD-Horror_2/facilityMap.png" style="width:100%">
+                A loose facility map mocked up in excel allows me to map where items will be placed in the game world, thus planning progression.
+
+            </p>
+
+            <h2>Combat:</h2>
+            <div class="row">
+                <div class="column" style="flex:75%">
+                    <p>
+                        Combat will consist of 4 layers of content (displayed in order of rendering):<br>
+                        - environments: pre-rendered in blender <br>
+                        - enemies: pre-rendered in blender <br>
+                        - player character: filmed footage of myself or an actor.<br>
+                        - UI assets: battery charge, health and ammo<br>
+                        The game-play of combat will utilise darkness and light from a players torch. Players will use the crank of the Playdate to charge the battery, this battery will dissipate over time, thus illuminating the environment less and less. Charging can not be done when reloading your weapon, aiming can not be done when charging the battery. Aiming uses the d-pad and the cursor is represented by the light of the flashlight as inspired by the Alan wake franchise.  
+                        <br><br>
+                        Above is a proof of consept for consept for the combat sequence featuring cursor movement, lighting and batery charging via the crank.
+                    </p>
+                </div>
+                    <div class="column" style="flex:25%">
+                            <img src="images/DevLog_PD-Horror_2/Combat_POC.gif" style="width:100%">
+                           
+                    </div>
+            </div>
+
+            <h2>The Map:</h2>
+            <p>
+                For the map I want to emulate the look of the maps in the metroid prime games. This wireframe low-poly model should be possible on Playdate hardware as other Playdate games like orrery and chaos engine feature low definition 3d effects. I intend to use a 3D to 2D projection method as described in <a href="https://youtu.be/qjWkNZ0SXfo?si=-PevmQiHIOKVKnR" class="w3-text-indigo">this video</a> to calculate the on-screen positions on the vertices and utilise the Playdate draw line function to connect them together.
+                <div class="row">
+                    <div class="column" style="flex:35%">
+                        <img src="images/DevLog_PD-Horror_2/Metroid-Prime07292023-114241-81359.jpg" style="width:100%">
+                        Map from Metroid Prime 
+                    </div>
+                    <div class="column" style="flex:35%">
+                        <img src="images/DevLog_PD-Horror_2/Metroid-Prime-2-Echoes08232025-024908-91626.jpg" style="width:100%">
+                        Map from Metroid Prime 2: Echos 
+                    </div>
+                    <div class="column" style="flex:30">
+                        <img src="images/DevLog_PD-Horror_2/3dRenderer2.gif" style="width:100%">
+                        My custom 3D wierframe Renderer for Playdate. see more details in upcoming DevLog
+                        <br> will be replaced with low poly map model later in development
+                    </div>
+                </div>
+
+            </p>
+
+
+            <h2> The World Design:</h2>
+            <p>
+                The game is supposed to be set in a underwater laboratory. Design should aim to feel claustrophobic and industrial. The design of the setting should take inspiration from real world examples of submarines, space stations, and oil rigs as well as fictional environments from franchises like: alien, the abyss, lone echo, soma and dead space. Uniforms should take similar inspiration: the main character should be waiting simple practical clothing such as coveralls.
+                <img src="images/DevLog_PD-Horror_2/TITD_MoodBoard.png" style="width:100%">
+                Above is a moodboard for reference and inspiration for the world and main character, for details for adapting art for the playdate check out the first Dev Log.
+            </p>
+
+            <h2>Cut-scenes:</h2>
+            <p>
+                The game will potentially feature pre-rendered cut-scenes for both story beats, new environments unlocking and transitions between arias.  For length and level of detail look to metroid zero mission as a guide for detail.
+            </p>
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}</script>
+
+</body>
+</html>
