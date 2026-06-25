@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DevLog PD Horror 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/dark.css">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        #MessageBox {
+            height: 200px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        #virtcent {
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .flex-container-child {
+            border-radius: 25px;
+            background-color: #131316;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            max-width: 340px;
+            hight: 3000px;
+            text-align: center;
+        }
+
+        .mini-flex-container {
+            display: flex;
+            background-color: #131316;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+            .mini-flex-container > div {
+                border-radius: 15px;
+                margin: 2px;
+                padding: 5px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-indigo w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><img src="images/JemLogoOpen_White.png" style="width:100%;height:100%" alt="logo"><b><!--Jemma Smith<br>--><br>Game Designer</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="index.html#Home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="index.html#Portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Portfolio</a>
+            <a href="index.html#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+            <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="DevLogs.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Dev Logs</a>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+        <img src="images/JemLogoOpen_White.png" style="width:15%;height:15%;" alt="logo">
+        <!--<span>Jemma Smith</span>-->
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+        <!-- Code Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-xxxlarge w3-text-indigo"><b>Playdate Horror Game Dev Log 3: Map Renderer, UI and Shooting Gallery Progress</b></h1>
+            <hr style="width:50px;border:5px solid #20504F;" class="w3-round">
+            <h4>25/06/2026</h4>
+        </div>
+                <h2 >general progress: </h2>
+               <img src="images/DevLog_PD-Horror_3/TITD_PD_TitleCard.png" style="width:100%">
+                           
+            <p>
+                the project so far has had some is progressing well, although slower than I would have liked. Whenever progress has been slow it has been a result of the continued refinement of processes in production. For instance: to ensure enemies align on different environments the vanishing point should be consistent between different background renders. 
+
+            </p>
+            
+            <h2>The map:</h2>
+            <p>
+               To help convey the scale of the underwater lab and further the players progression I wanted to create a 3d low-poly map to be rendered in wire-frame. The wire-frame aesthetic acts both as technical necessity (due to the low computational power of the Playdate) and an artistic choice as this look is inspired by the map in the Metroid prime games. It would be possible to use a 3d library I found, however the performance is unacceptable to me (averaging 17-20 fps, the Playdate target 30 fps). As such I decided to build my own 3d wire-frame renderer using the Weak Plane Projection as explained by <a href=" https://youtu.be/qjWkNZ0SXfo?si=-PevmQiHyIOKVKnR" class="w3-text-indigo">this video.</a>
+                <br>
+                <div class="row">
+                    <div class="column" style="width: 70%">
+                       <p style="width: 90%"> 
+                            The renderer works by storing the object in a list of Vector3 positions. These points are 3D world positions, but we want to convert them to a 2D screen positions. To do this we can take the X and the Y coordinates and divide it by that points Z coordinate, as such the further away (larger the Z value) the closer to the vanishing point (0,0,0) the point is drawn to the screen. The default 0,0,0 position on the Playdate is the top left corner of the screen, as such we need to add 200,120 to the final out put to move the vanishing point to the centre of the screen. To move the map around we keep a new Vector3 to track the objects position, this is added to each point in the list before the projection is calculated (the same process is done but with rotation). After this we can use <code>gfx.drawLine()</code> to draw lines between these screen points thus creating the airframe. 
+                        </p>
+                        <pre style= " width:90%"><code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+--converting a 3d vector to a 2d Vector involves deviding the x and y coords by the z depth 
+for index, i in ipairs(vector3Array) do
+    -- handels rotation along the z then x axis
+    tempVector3Array[index] = NewVector3(vector3Array[index].x ,(vector3Array[index].y *cX) - (vector3Array[index].z * sX) , (vector3Array[index].y *sX) + (vector3Array[index].z * cX))
+    tempVector3Array[index] = NewVector3((tempVector3Array[index].x * cY) + (tempVector3Array[index].z * sY),tempVector3Array[index].y,(-tempVector3Array[index].x * sY) + (tempVector3Array[index].z * cY))
+    --converts 3d vectors into 2d screen positions for each vertex
+    cubeScreenPos[index] = NewVector2((tempVector3Array[index].x + mapPos.x) * scaleAmmount / (tempVector3Array[index].z + mapPos.z)+ 200,(tempVector3Array[index].y + mapPos.y) * scaleAmmount / (tempVector3Array[index].z + mapPos.z) + 120)
+        
+    drawLines()
+end
+</span></code></pre>
+                    
+                    </div>
+                    
+                    <div class="column" style="flex:30%">
+                        <img src="images/DevLog_PD-Horror_3/PositionFormula.png" style="width:100%">
+                        Above is the 3D -> 2D position formula, below is the proof of consept for the map system.
+                        <img src="images/DevLog_PD-Horror_3/3dRenderer2.gif" style="width:100%">
+ 
+                    </div>
+                </div>
+                In my current process vertices positions and edges are input into the code manually, however this is a lot of manual work even just for a cube, as such I will need to optimise this progress. This article discusses how I might be able to parse information from an obj file into my code. In addition to learning how to parse info I also need to design a 3d model to represent the lab. The only other consideration is designing the map with the minium edge and vertex count to optimise performance. 
+
+            </p>
+                    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+			        <script>hljs.highlightAll();</script>
+
+
+
+            <h2>The UI:</h2>
+                <p>
+                    User interface for this project takes inspiration from other survival horror games, such as The Last of Us, Alan Wake 2, and Resident Evil. Other games of the survival horror genre such as the metro series and dead space serve as inspiration for game play but cant serve as inspiration for the IU elements, as these games feature diegetic UI (diegetic meaning it exists within the world of the game). While having maps and ammo counters exist as physical items in game would be interesting as a game design element, I believe that it would be too complex to implement well on the Playdates hardware. This is some what disappointing as many survival horror games minimise the ui elements, some time having the option to remove them entirely in order to create a more grounded and immersive experience or even forcing players to play without UI on the hardest difficulty. The map may be designed to be diegetic as the wire-frame graphics could be contextualised by it being displayed on a computer monitor similar to Alien Isolation.
+
+                <div class="row">
+                    <div class="column" style="flex:50%">
+                        <img src="images/DevLog_PD-Horror_3/alan-wake-ii-hud-3.png" style="width:100%">
+                        Alan Wake 2 UI. I like the clean solid white UI elements here.
+                    </div>
+                    <div class="column" style="flex:50%">
+                        <img src="images/DevLog_PD-Horror_3/the-last-of-us-part-ii-hud-aiming-crosshair.jpg" style="width:100%">
+                        UI from The Last of Us part 2, note the segmented semi-circular health bar. also uses solid colored UI elements
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column" style="flex:30%">
+                        <img src="images/DevLog_PD-Horror_3/ResidentEvil2(2019)04242020-094122.jpg" style="width:100%">
+                        UI from Resident Evil 2 Remake. has a lack of a healthbar
+                    </div>
+                    <div class="column" style="flex:30%">
+                        <img src="images/DevLog_PD-Horror_3/re4ui.jpg" style="width:100%">
+                        Resident Evil 4 UI, note the siliarities in ui layout compared to The Last of Us or Alan Wake
+                    </div>
+                    <div class="column" style="flex:30%">
+                        <img src="images/DevLog_PD-Horror_3/Dead-Space-202302182023-115850-16014.jpg" style="width:100%">
+                        Dead Space UI is a great example of diegetic ui, see the health bar being displayed on the characters back or the ammo being displayed as a hologram
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="column" style="flex:50%">
+                        <img src="images/DevLog_PD-Horror_3/Alien-Isolation12152020-025858-73565.jpg" style="width:100%">
+                        Alien: isolation map screen is designed to look like an in world computer monitor, i may take inspiration for this in my map screen.
+                    </div>
+                    <div class="column" style="flex:50%">
+                        <img src="images/DevLog_PD-Horror_3/metro-exodus-check-map.png" style="width:100%">
+                        diegetic UI of Metro: Exodus. Like the Dead Space UI, this is too much detail for my art style.
+                    </div>
+                </div>
+                <br>
+                For survival horror games that do feature non-diegetic UI, the design is strikingly similar between games: Alan Wake2, The Last of Us 2, and Resident Evil 4 remake all feature Heads Up Display (HUD) that consist of the ammo of the current weapon, the reserve ammo for that weapon, the semi-circular health bar and few other elements, Resident evil 2 remake goes even further and only displayed ammo.
+                <br><br> 
+                For the UI in my game I will be utilising this same nominalistic art style as it works well both stylistically, and being a game for the Playdate there is only so much I can do due to technical limitations. The ammo indicators in my UI emulate the sources near perfectly, not much work was needed to be done. The heath bar was some what trickier. In games with a semi-circular heath bar the amount is indicated with a smoothly moving filling of the rounded gauge, this is difficult to do within the Playdates hardware, I’m sure there would be a solution as its possible to have smoothly filling straight progression bars using the built-in Playdate graphics <code>fillRect</code> and <code>drawRect</code> functions. Due to these limitations I decided to use a segmented health bar like that seen in The Last of Us 2, as the image of the health bar sprite can just be changed out to display health.
+                <h3>The battery UI:</h3>
+                As charging the flashlight is a core part of the combat loop it is important to show such an important element clearly. The Alan wake franchise acts the primary inspiration for the lighting mechanic for this game, as such to design my flashlight UI I first looked to how these game handle their flashlight UI. Both Alan Wake 1 and 2 have UI elements dedicated to the flashlight, while they are consistent with a minimalist design language of many survival horror games they are much smaller than I want within my game, mostly due to the smaller screen of the Playdate. The flashlight differs between the 2 games in terms of mechanical use and UI: the Flashlight UI in Alan wake 1 is a smooth moving gauge that fills or is drained as the flashlight is used, it is in the shape of a flashlight to more accurately convey its meaning. The Flashlight in Alan Wake 2 is different in that each battery has “charges” that deprecate when the flashlight its focused, and acts almost like secondary ammo. The UI reflects this by showing a battery icon, the number of reserve batteries and the number of charges left on the current battery – represented by solid filled rectangles in a bar.
+                <div class="row">
+                    <div class="column" style="flex:50%">
+                        <img src="images/DevLog_PD-Horror_3/Alan-Wake_UIjpg" style="width:100%">
+                        note the flashlight UI in the top left corner of the HUD of Alan Wake 1
+                    </div>
+                    <div class="column" style="flex:50%">
+                        <img src="images/DevLog_PD-Horror_3/alan-wake-ii-hud-3.png" style="width:100%" >
+                        solid blocks show the "charges" of the flashlight in Alan Wake 2
+                    </div>
+                </div>
+                <br>
+                 <div class="row">
+                    <div class="column" style="flex:25%">
+                            The battery icon in my game takes up a large stretch of the lower edge of the screen, nestled between the player character and the health bar. Its large screen presence is to both convey its importance, and to maintain readability on the small screen. However it it placed on the bottom of the screen as to be out of the way and acts to frame the onscreen action. The icon its self is just a white box with black in-fill that fills with white to indicate charge, this was done with the Playdate graphics <code>fillRect</code> and <code>drawRect</code> functions. An additional small box is located to the right side of the bar to represent the nub on the end of a type batteries, my goal was to make the bar look like a large long battery to better convey its meaning to players.
+                    </div>
+                    <div class="column" style="flex:75%">
+                        <img src="images/DevLog_PD-Horror_3/TITD_ui.png" style="width:100%">
+                      
+                    </div>
+                </div>
+                </p>
+
+            <h2>Combat:</h2>
+            <p>
+                Combat is still the least developed element of the game, despite having UI the shooting functionality doesn’t even interact with sprites yet. Despite the lack of mechanical combat, a lot of time has been spent laying the ground work for the combat. The lighting system is nearly identical to it was in the previous update, however the threshold for when the lighting states are changed have been moved, closer together and all at the beginning to make the increasing light appear smoother. I want to look into blending between images to achieve an even smoother transition between states. If image blending is possible on the Playdate it may also mean that I can use less images, thus saving memory although it would most likely be at the cost of performance. 
+            
+                <div class="row">
+                    <div class="column" style="width: 50%">
+                        <h3>Enemy Integration:</h3>
+                        <img src="images/DevLog_PD-Horror_3/MonsterShowcase.gif" style="width:100%">
+                      The biggest challenge so far in regards of environmental details is the integration of the enemy within the environment. Due to both environments and enemies just being sprites that slide around the screen it is difficult to match the motion and keep the two elements from drifting off one another in ways that look unnatural to players. I tried a few solutions but the one that I ended up settling on was to use the same 3D to 2D vector conversion as used in my map system, by storing the monsters position as a 3D vector, then dividing its x and y axis positions by its z or depth position I am able to achieve realistic movement within the pre-rendered environment. All that is needed to accurately track its position into the moving environment is to offset its position so that the (0,0) position that the sprite is moving towards as it gets further away is set to be that of the vanishing point of the pre-rendered hallway. This may require all future hallways to have the same vanishing point, alternatively, a new list containing vector coordinates for the vanishing points of each environments could be made. The scale of the monster is also defined by the z position of the 3D position vector. Scaling the monster has its own difficulties that may have to be resolved: due to the monster sprite being dithered using a Bayer-4x4 dither pattern, noticeable grid like artefacts are present when the image is scaled, this is unintentional and very distracting. To resolve this I may look into other dither patterns with less notable scaling artefacts.
+                
+                    </div>
+                    <div class="column" style="flex:500px">
+                        <h3>Environments:</h3>
+                        I finally have a real environment in the game, utilising a hallway asset from the original trapped in the deep game. I was somewhat disappointed by the lack of parallax. I considered making several planes with transparency as to create parallax, but this would require a lot more assets and thus memory allocated to each environment. Perhaps a single new foreground layer could be enough to portray this parallax effect. 
+               
+                        <img src="images/DevLog_PD-Horror_3/LightingShowCase.gif" style="width:100%"> <br>
+                        
+                    </div>
+                </div>
+                
+                <h3>The Flashlight:</h3>
+                I noticed that it was kind of hard for players to realise that the flashlight was the cause of the lighting changes in the environment. So to clear this up using visual communication, I aimed to add a flashlight cone light. A series of flashlight cone images stored in a list are used to create this effect, and are swapped between with the changes in lighting states just like backgrounds. By establishing the position of the flashlight of the character and the position of the cursor on screen we can angle the light cone and even stretch and compress it in order to create a moving light cone. I’m not 100% happy with the final result. However, due to the already performance intensities of rotating the sprite I am unlikely to improve on the flashlight for not, potentially it can act as a stretch goal.
+
+            </p>
+
+            <h2>The project moving forward:</h2>
+            <p>
+                There is still a LOT of stuff that needs to be done for this project, improving existing mechanics, adding fully featured monster behaviour, ect. My next direct step is to start working on the 2d exploration using the pulp engine for Playdate.
+
+            </p>
+            
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}</script>
+
+</body>
+</html>
