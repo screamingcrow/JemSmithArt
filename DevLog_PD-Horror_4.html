@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DevLog PD Horror 4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/dark.css">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        #MessageBox {
+            height: 200px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        #virtcent {
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .flex-container-child {
+            border-radius: 25px;
+            background-color: #131316;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            max-width: 340px;
+            hight: 3000px;
+            text-align: center;
+        }
+
+        .mini-flex-container {
+            display: flex;
+            background-color: #131316;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+            .mini-flex-container > div {
+                border-radius: 15px;
+                margin: 2px;
+                padding: 5px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-indigo w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><img src="images/JemLogoOpen_White.png" style="width:100%;height:100%" alt="logo"><b><!--Jemma Smith<br>--><br>Game Designer</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="index.html#Home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="index.html#Portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Portfolio</a>
+            <a href="index.html#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+            <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="DevLogs.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Dev Logs</a>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+        <img src="images/JemLogoOpen_White.png" style="width:15%;height:15%;" alt="logo">
+        <!--<span>Jemma Smith</span>-->
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+        <!-- Code Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-xxxlarge w3-text-indigo"><b>Makeing A Survival Horror Game For The Playdate Dev Log 3: Lighting</b></h1>
+            <hr style="width:50px;border:5px solid #20504F;" class="w3-round">
+            <h4>08/07/2026</h4>
+        </div>
+
+        
+            <h2 >The Current FlashLight: </h2>
+             <p>
+                In my last update I achieved the effect of having a cone of light coming from the flashlight by using sprites, then rotating said sprite. this worked fine in the simulator but came with some serious performance issues when tested on device. i still consider the flashlight cone to be an important part of the project as the flashlight cone helps communicate that it is you making the environment lighter or darker. 
+                <br> Below is a showcase of my previous version of the flashlight method.
+                <div class="row">
+                    <div class="column" style="flex:500px">
+                        <img src="images/DevLog_PD-Horror_3/LightingShowCase.gif" style="width:100%"> <br>
+                        
+                    </div>
+                    <div class="column" style="flex:50%">
+                        <h3>A few issues with the previous flashlight version:</h3> <br>
+                        - rotating and scaling the flashlight cone image was a hit to performance.(as low as 5fps on device) <br>
+                        - rotating and scaling the image resulted in weird artifacting pattern appearing when small on screen, and stretched pixels when cursor was far away.<br>
+                        - Simply scaling the image to fit the cone getting closer to the player character isn't consistent to how a 3d cone would be viewed as perspective changes.<br>
+                        - this is less of an issue exclusive to the current flashlight cone method but rather an issue with my current method of thinking: the flashlight illuminates the full room, not just the spot the flashlight is focused. this inst the end of the world, but as im moving forward with the project i am starting to see the flaws of this method. perhaps using a mask or a dimming texture could help add to the technique. maybe by using a large black texture with a hole in it around would help convey the flashlight better than the use of a cone would. 
+                    <br>
+                        <h3>Some possible solutions:</h3>
+                        -Using a flashlight mask to dim the surrounding environment leaving the aria the player is aiming at a full intensity. this method has some key advantages: using 1 set of masks my mean that environments and enemies only need to be rendered at 1 lighting intensity, as the flashlight mask will be doing the work of dimming the room thus saving storage and memory. it will create better highlights of the aria the player is aiming at, resulting in gameplay moments where plays have to balance 2 oncoming enemies but can only view one at a time by using the flashlight. The only flaw with this solution is that the mask would cover elements that are supposed to be illuminated in the environment when it is dark, this constraint may be ignored as the effect is convincing enough as it is, if I did want to improve the effect ,it would be possible to use a seconded environment texture as a mask, but I don't think this is necessary. <br>
+                        - A potential solution specifically for the flashlight cone is to attempt to create the same effect as the sprite based method but using the built-in Playdate <code>gfx.draw</code> functions. my intentions use <code>drawCircle</code> to create a large circle around the aiming reticle, then using <code>gfx.drawLine</code> to draw between the <code>flashlightPoint</code> on the main <code>characterSprite</code, and random points along the larger circle. thus creating a smoother and more permanent technique. my main concern with this method is that due to the <code>gxf.draw</code> functions work in solid colours it may be difficult to create the sense of a gradient in the cone of light. And using draw line my result in super obvious lines rather than the noisy effect that the image texture had. <br>
+                        -Another attempt at a flashlight could be done by having a gradient texture pre rendered, then adjusting its transparency using an image mask in the shape that I can adjust using code, like <code>gfx.drawTri</code>.-Another attempt at a flashlight could be done by having a gradient texture pre rendered, then adjusting its transparency using an image mask in the shape that I can adjust using code, like <code>gfx.drawTri</code>.
+                        <br> <br>
+                        Combining several of these methods may create the most believable affect.<br>
+                        I am interested to see how the flashlight focus mask pairs with the masked gradient texture.
+                    </div>
+
+                </div>
+                
+            </p>
+
+
+            <h2>Creating The New FlashLight</h2>
+            <p>
+                <div class="row">
+                    <div class="column" style="flex:500px">
+                        <img src="images/DevLog_PD-Horror_4/FlashlightMaskTest1.gif" style="width:100%">
+                        Above is my first attempt using a mask over the scene, this uses the previous light cone effect.
+                       
+                    </div>
+                    <div class="column" style="flex:50%">
+                         In my first testy with using a flashlight mask I found it instantly more effective at converting that light was coming from the flashlight, and now I will be able to remove the mask all together to portray the muzzle flash illuminating the whole room. However the first variation was too small to cover the whole screen when the cursor is at the far corners of the screen, this will be fixed in future iterations. This first iteration also resulted in some flashes as the dither pattern of the mask lining up with the dither pattern behind it, and issue caused by the textures moving slightly in relation with each other causing a different set of textures to slip through the mask, this also forced move speed to be locked down at intervals of 3 pixels moved per frame, else the mask would line up with several different sets of pixels in the background image, thus causing an unpleasant flashing effect. I resolved the issue of textured being misaligned when moving was due to an order of operations error, which has now been resolved.
+                        <br><br>
+                        Having to lock down the move speed is unfortunate as it may limit my ability to implement weapon sway, dynamic move speed and recoil. But this remains to be seen and tested.
+                    
+                    </div>
+                </div>
+            </p>
+
+            <h2>Flashlight Cone Version 2</h2>
+            <p>
+                I tried making a flashlight cone using the draw line function to draw 2 lines one above and one below the flashlight focus point, but as I expected it didn't look good despite being permanent. My next attempt was to add a noisy gradient texture and use a mask or stencil so some time was spent reading through the Playdate documentation regarding these topics. The intention is to create a mask using <code>drawPolygon</code> to create the mask.
+                <br><br>
+                <div class="row">
+                    <div class="column" style="flex:750px">
+                         <img src="images/DevLog_PD-Horror_4/FlashlightBreakdown_clan.gif" style="width:100%">
+                    </div>
+                    <div class="column" style="flex:50%">
+                         <img src="images/DevLog_PD-Horror_4/FlashLightBreakdown_Marked.gif" style="width:100%">
+                    </div>
+                </div>
+                Using the flashlight mask has helped create the impression of the flashlight actually illuminating the environment. But now to revise the effect the flashlight charge has on lighting. I created several versions of the flashlight mask with both larger flashlight radius but also slowly dithering the blackout area to alow more of the pixels from lower layers to be visible, this has the effect of increasing visibility of the whole environment as the battery becomes more and more charged. This is great in terms of gameplay as it encourages players to keep the battery charged because it increases visibility in the peripheral arias outside of the players direct reticle. This effect also has the added benefit of implying the increased lighting is caused by ambient lighting – the idea that as the lighting gets brighter it will bounce around and cause the whole scene to become brighter.
+                <br><br>
+                The process of making a better flashlight cone and gradient is done by making a 200x200 pixel gradient texture, this texture is then attached to the flashlight origin point. This means that as the character moves so does the gradient. Next we need to set a mask, this is done by pushing context to the image. To calculate this mask we can use <code>gfx.fillPolygon()</code> to draw a solid white triangle between the flashlight origin and the top and bottom of the flashlight reticle. This method of making a mask is far more permanent than my previous attempt. The only possible way of improving the effect is by drawing the polygon blurred to create less harsh edges on the edges of the cone. Unfortunately, this highly effected performance. According some research this is an issue with the function itself, and the different revisions of the Playdate may even process the effect with differing levels of performance. Due to the performance issues I unfortunately wont be using the blurred mask. 
+                <br><br>
+                Below is a comparison of the performance of the blurred and unblured versions.
+                <div class="row">
+                    <div class="column" style="flex:750px">
+                        <img src="images/DevLog_PD-Horror_4/deviceInfo_unbluredFlashlight.png" style="width:100%">
+
+                        Unblurred Flashlight performance on device
+                    </div>
+                    <div class="column" style="flex:50%">
+                        <img src="images/DevLog_PD-Horror_4/DeviceInfo_flashlightBlured.png" style="width:100%">
+                        
+                        Blurred Flashlight performance on device
+                    </div>
+                </div>
+            </p>
+
+           
+            <h2>Other small effects:</h2>
+            <p> In addition to the main effect of the light cone, we also slide the gradient texture along the x axis if the cursor gets too close to the flashlight origin point.  This is to avoid an issue of the mask having a noticiable cuttoff where the gradient texture is nearly fully lit. Another small improvement to the system is one that future proofs the flashlight cutout mask for when we introduce weapon sway. As mentioned earlier in this devlog, the blackout area of the flashlight cutout mask, uses dithering along the alpha channel so that pixels from lower layers can be seen. The pixels that peak through are at a consistant interval (due to the dither paturn I'm using also being at a consistant interval), as such the movements of the 2 layers should be at the same move speed as to avoid different sets of pixels from the background image from peeking throught. This avoids an unpleasent flashing effect, although it would also limit my cursor movement speed. To future-proof this constistant movemnt of the flashlight cutout mask fo when I implement dynamic movement speed on the cursor: I made a function that rounds the cursor position to the nearest multiple of the consistant move speed (in my case 3 pixels) </p>
+            <img src="images/DevLog_PD-Horror_4/lightMaskSliding.gif" style="width:100%" >
+
+            <h2>The Project Moving Forward</h2>
+            <p>
+                The shooting gallary still has a long way to go before being fully playable. The main thing missing is a propper monster behaviour, and shooting mechanics. This will be my next major step in the creation of the game.
+
+            </p>
+                        
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}</script>
+
+</body>
+</html>
