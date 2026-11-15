@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DevLog PD Horror 5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/dark.css">
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            -ms-flex: 50%; /* IE 10 */
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        #MessageBox {
+            height: 200px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        .row {
+            display: -ms-flexbox; /* IE 10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE 10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        #virtcent {
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #1e1e24;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .flex-container-child {
+            border-radius: 25px;
+            background-color: #131316;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+            max-width: 340px;
+            hight: 3000px;
+            text-align: center;
+        }
+
+        .mini-flex-container {
+            display: flex;
+            background-color: #131316;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+            .mini-flex-container > div {
+                border-radius: 15px;
+                margin: 2px;
+                padding: 5px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-indigo w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><img src="images/JemLogoOpen_White.png" style="width:100%;height:100%" alt="logo"><b><!--Jemma Smith<br>--><br>Game Designer</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <a href="index.html#Home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="index.html#Portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Portfolio</a>
+            <a href="index.html#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+            <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <a href="DevLogs.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Dev Logs</a>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-indigo w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-indigo w3-margin-right" onclick="w3_open()">☰</a>
+        <img src="images/JemLogoOpen_White.png" style="width:15%;height:15%;" alt="logo">
+        <!--<span>Jemma Smith</span>-->
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+
+        <!-- Code Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-xxxlarge w3-text-indigo"><b>Making A Survival Horror Game For The Playdate Dev Log 5: Combat</b></h1>
+            <hr style="width:50px;border:5px solid #20504F;" class="w3-round">
+            <h4>13/11/2026</h4>
+        </div>
+
+        <p>
+            An important part of almost every game it the combat, and this game is no exception. In the final version of the game combat will be presented as shooting gallerias that sees players shooting enemies that move towards them down the hall or target specific weak points. I would like to lean into the survival horror inspirations more in combat, I plan to do this by adding weapon sway/ inertia, having a low rate of fire and a slow reload to build tension and slow moving enemies. 
+        </p>
+
+        <h2>The Current Combat System: </h2>
+        
+        <div class="row">
+            
+            <div class="column" style="flex:75">
+                <p>
+                I am very happy with how the current combat system works, the reload speed and rate of fire have already been brought to a level that I am happy with. The current system also has taken into consideration as to how gunshots will be registered. Whenever the gun is fired a <code>Sprite.CollideRect</code> which will be able to detect the overlap of another collider and thus register a hit. However not all elements of the current system are as robust, for instance: the only indication that the gun is fired is the changing of the ammo count UI, and a large flash. These are a good start however there is nothing to communicate a hit or a miss to players. Thus why particles will be important to add. Sound is another element I would like to add to aid in the clarity of shooting.
+                <br> <br>
+                Note that the monster isn't affected by getting shot in any way. This will be what this update aims to fix.
+            
+            </p>
+            </div>
+            <div class="column" style = "width:250px">
+                <img src="images/DevLog_PD_Horror_5/Combat0.gif" style="width:250">
+               
+
+            </div>
+
+        </div>
+        
+
+        <h2>Weapon Sway And Inertia: </h2>
+        <p>
+            My initial idea on how to implement additional weapon movement was to have a Vector2D (stores x and y positional data) to generate an ‘cursor offset’. This cursor offset would be a combination of inertia (calculated by tallying how many consecutive frames a movement direction was held down, and slowly decreasing that value when the button is released) and weapon sway (calculated by using a sin and cosin wave pair to make the cursor move in a circle). This offset would be calculated and then multiplied by a “weapon sway intensity” variable.
+        <br><br> 
+            I started implementing the inertia, but as it changed the position of the mouse, it also change the position of the lighting mask (see the <a href="DevLog_PD-Horror_4" class="w3-text-indigo"> Dev Log on lighting</a>). In short: the lighting effect is highly reliant on the Lighting mask and the background sprite moving relative to one another in units of 4 pixels. If this consistent movement isn't reached then nasty flickering effects will occur (not shown due to risk of triggering seizures).  Remnants of the inertia system can be seen as in other clips shown in this Dev Log a small black circle can be seen in/around the player cursor, this is the calculated inertia. So in future I will need to think of a new way to achieve the desired effect, or life without it. My current plan of how to execute this is to separate the lighting and cursor, have cursor move with the calculated dynamic aiming system and the flashlight (Lighting Mask) continue to move at its consistent 4 pixels per frame.
+        </p>
+           
+        <h2>Creating A Gunshot Sound Effect:</h2>
+
+        <div class="row">
+            <div class="column">
+                <p>
+                    Whilst the Playdate does allow for recorded sound I have decided to use the built in synthesis engine both for performance and as an opportunity to learn about programming music. I am very familiar with synthesizers and the architecture of various synthesis engines of hardware synths, but the tactile interface of a hardware synth is vary different to the process of controlling each variable of the sound individually. The sound its self consists of two elements: white noise and a low bass to give the sound some additional kick.
+                </p>
+            </div>
+            <div class = "column">
+                <pre style= " width:90%"><code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+--gun noise
+local gunNoise = pd.sound.synth.new(pd.sound.kWaveNoise)
+gunNoise:setADSR(0,0.3,0,0)
+local gunBass = pd.sound.synth.new(pd.sound.kWaveSawtooth)
+gunBass:setADSR(0,0.3,0,0)
+                </span></code></pre>
+            </div>
+
+        </div>
+            <p>
+                The sound was pretty easy to implement: in the declarations I defined the wave of each sound. I also set an envelope generator (EG) which defines the the shape of the sound Attack, Decay, Sustain and Release (ADSR) or how loud the sound is at different phases of its life cycle.
+            </p>
+        <div class="row">
+            <div class = "column">
+                <pre style= " width:90%"><code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+--Play Gun Noise (as part of the shooting behaviour)
+gunNoise:playNote(261.63,1,1)
+gunBass:playNote(50,0.75,1)
+                </span></code></pre>
+            </div>
+            <div class="column">
+                <p>
+                    Finally, the sound is played as part of the <code>ShootBeh</code> function and is triggered alongside the flashing effects and changing of ammo count.
+                </p>
+            </div>
+        </div>
+        <h3>Sound going forward:</h3>
+        <P>
+            When it comes to the sound/music for the full game, I still have a lot to learn and plan. Because I only have 1 sound effect at the moment I could have used an audio sample, but as the game expands the memory requirements may cause some issues. While my project is white small and I have yet to even taking up half of the systems memory, it is still something I wish to consider, thus why synthesising a majority of the sound track on device. My gun sound effect works because it is a simple sound being triggered once, but when more complicated sounds and music come into being I don’t want to program each note separately. As such I should look in to MIDI sequencing on the Playdate which I know is possible, due to it being featured in the Playdate SDK and documentation, I just wouldn't know how to compose for such a pipeline. Composition as a whole would be very different to my previous experience with making electronic music, so in future I might find it useful to research the music of game consoles like the Super Nintendo Entertainment System (SNES), specifically titles like Super Metroid. 
+        </P>
+
+        <h2>Targets And Particle Sprites:</h2>
+        <p>
+            The Majority of the Progress has been made in terms of actually having working shooting game play, with targets that react to being hit. This is done through the use of Object oriented Programming (OOP) which Lua doesn’t nativity support, but the Playdate SDK provides and OOP library. The reason I am using OOP as oppose to other approaches is because it will allow me to have multiple instances of a given object, and utilise inheritance and polymorphism. This allows me to define target behaviours, like what happens when they are hit, what happens when they die, and make several different versions of these targets (practice target, pad lock, enemy, enemy weak point, etc) with minimal lines of code. 
+
+        </p>
+        <h3>The particles:</h3>
+        <P>
+            I started creating the particles first as I could use them weather or not the target class is working. I knew that as the project currently stands I only need 2 sets of particles: sparks for when an inorganic target is hit, and blood for when an organic target is hit. Both set were pre-rendered in blender as having hundreds of individual particles would be a pain to make, and highly performance draining. The sparks were created using Blenders particle simulation system, and the blood splatter was made with Blenders fluid simulations system, neither I had had much experience so it was nice to learn some new workflows. Once each set of images were rendered they were converted to sprite image tables so that they can be read by the Playdate.
+        </P>
+        <p>
+            The most time consuming process of creating the sprites was implementing them. I have made animations for the playdate in the past: 
+            <br> - one was part of my <a href="DevLog_PlaydateJackpot.html" class="w3-text-indigo">Playdate Slot Machine</a> project, but this was done incredibly poorly. I used an array and had to reference each image in my animations separately, this was incredibly time consuming to add a single new animation. 
+            <br> - And the other was part of this project: specifically a version of my start up logo that was animated. This was implemented with an image table and a Playdate animator. I learned several important things using this method, it is good to round the output value of the animator to ensure it only outputs whole numbers as to not incorrectly draw half an image form the table.
+        </p>
+        <p>
+            As for my particle class, I created a new class which inherits from the <code>Playdate.Graphics.Sprite</code> meaning that we can use any sprite function in our new class. This class contains information as to its position, size and which image it should be, it also internally sets up an “offsetArray” this is to ensure that each animation is centred within the radius of the players aiming reticle.
+        </p>
+        <pre style= " width:100%"><code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+class('Particle').extends(gfx.sprite)
+
+Function Particle:init(x,y,z,height,width,imageID)
+
+Particle.super.init(self)
+    --============--
+    self.animator = gfx.animator.new((500/30*25),0,25)
+    self.legnthTableArray = {{25,45}{16,5}}
+    --1 == sparks, 2 == blood
+    self.imageTable = [gfx.imagetable.new("img/Particles/SparkParticleSpriteSheet_PD-table-64-64.png"),gfx.imagetable.new("img/Particles/BloodParticleSpriteSheet_PD-table-64-64.png")]
+    self.offsetArray = NewVector2 (16, 32)
+
+    --=================--
+    if z == nil then z = 1 end
+    self:moveTo(x + self.offsetArray.x,y + self.offsetArray.y)-- move to the xy position of the cursor
+    self:add()
+end
+        </span></code></pre>
+
+        <div class="row">
+            
+            <div class = "column" style=" width:70%">
+                <pre style= " width:100%"><code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+function Particle:update()
+
+            --envoke the end of life funtion when the animator has ended
+            if self.animator:ended() then
+                self:RemoveSprite()
+            else 
+                --during the animator 
+                if self.imageTable ~= nil then – checks to make sure image table exists
+                    local myRoundedNumber = RoudToNearestMultipleOfNumb(self.animator:currentValue(),1) -- rounds number to ensure the animator lines up with frame rate
+                    local myIMG = self.imageTable[self.ImageID}:getImage(myRoundedNumber)-- retrieves image from image table
+                    self:setImage(myIMG)-- sets the image of the sprite to be the one retrieved from the image table
+        end
+    end
+end
+                    </span></code></pre>
+            </div>
+            <div class = "column" style=" flex:29%">
+                <br>
+                Due to the particle class inheriting from sprite updates are automatically called by the <code>GFX.Sprite:Update</code> call. During which the animator checks to see if it is still running, if it has ended it removes the sprite (it actually calls the die function to allow for additional affects to occur, but this is simplified code for demonstration purposes), if the animator is till running: it will retrieve the required image from its respective array and store it as a local value that it then sets as the image of the sprite.  I had a lot of trouble figuring out the syntax for this as my previous example (my animated logo) used the <code>GFX.DrawTable</code> function, and as this new class is based of of sprites its is unable to draw directly to the screen.
+            </div>
+        </div>
+
+        <h3>Notes on particle spawning:</h3>
+        <div class = "row">
+          
+            <div class = "column" style = "width:50%">
+                    <pre style= " width:100%"><code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+function ShootBeh()
+    if canShoot then
+        if ammoInGun >= 0 then -- check to see if there is ammo in gun
+        
+            ammoInGun = ammoInGun - 1 
+            shootflashBool = true
+            canShoot = false
+            shootflashBool = true
+            pd.timer.performAfterDelay(shootCoolDown,ResetCanShootBool) -- timer that once complete will reset lighting, disable the colider and allows the player to shoot again.
+            -- handle collisions
+            print(cursorSprite:overlappingSprites()[1])
+
+            -- hit particle 
+            -- the only two hittable things are the enemy(blood particles) and the enviroment (sparks particle), so i can know easily which to use 
+            --only the enemies use target 
+            if(cursorSprite:overlappingSprites()[1]) == nil then
+                --miss 
+                local myHitMarker = Particle(mousePosX,mousePosY, 1, 1,1,1)
+                print("I didn't hit anything")
+            else
+                --hit
+                print("I hit something")
+                --check if other object is a target, if so make it take damage
+                if cursorSprite:overlappingSprites()[1]:isa(Target) then
+                    cursorSprite:overlappingSprites()[1]:TakeDamage(1)
+                end
+            end
+        end
+    end
+end</span></code></pre>
+
+
+            </div>
+
+              <div class = "column" style = "width:50%">
+                <p>
+                    Currently the system that decides weather or not the hit FX particle is a spark one or a blood one is decided by the <code>ShootBeh</code> script. This works for the game as it is at the moment, as the only targets will be organic monsters, but in the future I would like to make inorganic targets such as a breakable padlock, which will require the spark FX. To make this change the spawning of particles will be <code>OnHit</code> function of the particles class.
+                </p>
+                 <img src="images/DevLog_PD_Horror_5/Combat3.gif" style="width:250">
+                 <p>Note that the particle system changes depending or weather or not it is hitting a target(target image a place holder for testing)</p>
+
+                 <br>
+                 <p>
+                    code shown is simplified for sake of showcasing system and only shows details relevent to that feature.
+                 </p>
+            </div>
+            
+
+        </div>
+
+    <h3>The targets</h3>
+    <div class="row">
+         <div class = "column" style=" width:50%">
+                <pre style= " width:100%"><code class="language-Lua"  style= " background:#131316;" color: rgb(256, 256, 256);><span>
+function Target:init(x,y,z,height,width,hp,myBGSprite)
+    Target.super.init(self)
+    self.z = z
+    self:setCollideRect (-width/z + 64, -height/z + 64, width/z, height/z) 
+    self:moveTo(x/z,y/z)
+    self.hp = hp
+    self:add()
+end
+
+function Target:TakeDamage(ammount)
+    self.hp -= ammount
+    if self.hp <= 0 then
+        print("i will die now")
+        self:Die();
+    end
+    print("i got hit")
+    print(self.hp)
+end
+                    </span></code></pre>
+            </div>
+            <div class = "column" >
+                <br>
+                The target is incredibly similar to the particle system, the hope is that in future classes like monster and such it will be possible to add animations to a target so the monsters can move. The current system is fine but I am still working on making all elements fit within the 3D enviroment, to negait this I plan to use the position data of the Backgorund sprite (fed into the class as myBGSprite) and use that to calculate screen size and position.     
+                
+                <img src="images/DevLog_PD_Horror_5/Combat2.gif" style="width:250">
+                <br>
+                The demonstration above shows the teger getting removed after it has been hit 3 times. (particles not implemented in this demonstration)
+
+            </div>
+        </div>
+
+        <h2>Conclusion:</h2>
+        <div class="row">
+            <div class="column">
+                <h3>The final result:</h3>
+                <p>
+                    By pushing the spawning of the Target behind the lighting mask(see the <a href="DevLog_PD-Horror_4" class="w3-text-indigo"> Dev Log on lighting</a>) I am able to hid the target in the shadows, thus requiring the player to “search” with the flashlight. To further encourage the use of the flashlight: targets now randomly change position when they are hit (not groundbreaking game-play I know but it helps show what the game can be). 
+                </p>
+                <h3>Reflection:</h3>
+                <p>
+                    Overall I’m happy with how the project is progressing, I’ve learned a lot about developing out of engine, although coming from a background of using game engines (Unity 3D, Unreal Engine 5) I found myself struggling to contextualise workflows I already know into a new environment. I’m sure there are several elements of the execution of this project that are not best practices. But even still, I have found this project to be a great learning exercise.
+                </p>
+
+            </div>
+            <div class="column">
+                <img src="images/DevLog_PD_Horror_5/Combat4.gif" style="width:250">
+                <p>
+                    Shooting game-play with targets, hit effects and lighting.
+                </p>
+                
+            </div>
+
+        </div>
+
+        <h2>The Project Moving Forward:</h2>
+        <p>
+            For the time being I think I will take a break from this project, I would still like to change aspects I am unhappy with, for instance I would like to improve the Targets system, mostly to allow them to properly be tracked in 3D space so it looks like they really exist in the environment. I would still like to add weapon sway and inertia, so long as I am able to avoid image flickering due to overlapping dithering patterns. And the 2D side of the game hasn't event been started yet. I would like to return to this project after I gain more experience, and perhaps learning to manage and scope projects better.
+        </p>
+                        
+        <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}</script>
+<!-- script to handle code display-->
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</body>
+</html>

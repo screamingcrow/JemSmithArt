@@ -168,7 +168,7 @@
             </p>
 
 
-            <h2>Creating The New FlashLight</h2>
+            <h2>Creating The New FlashLight:</h2>
             <p>
                 <div class="row">
                     <div class="column" style="flex:500px">
@@ -185,7 +185,7 @@
                 </div>
             </p>
 
-            <h2>Flashlight Cone Version 2</h2>
+            <h2>Flashlight Cone Version 2:</h2>
             <p>
                 I tried making a flashlight cone using the draw line function to draw 2 lines one above and one below the flashlight focus point, but as I expected it didn't look good despite being permanent. My next attempt was to add a noisy gradient texture and use a mask or stencil so some time was spent reading through the Playdate documentation regarding these topics. The intention is to create a mask using <code>drawPolygon</code> to create the mask.
                 <br><br>
@@ -217,11 +217,11 @@
             </p>
 
            
-            <h2>Other small effects:</h2>
+            <h2>Other Small Effects:</h2>
             <p> In addition to the main effect of the light cone, we also slide the gradient texture along the x axis if the cursor gets too close to the flashlight origin point.  This is to avoid an issue of the mask having a noticiable cuttoff where the gradient texture is nearly fully lit. Another small improvement to the system is one that future proofs the flashlight cutout mask for when we introduce weapon sway. As mentioned earlier in this devlog, the blackout area of the flashlight cutout mask, uses dithering along the alpha channel so that pixels from lower layers can be seen. The pixels that peak through are at a consistant interval (due to the dither paturn I'm using also being at a consistant interval), as such the movements of the 2 layers should be at the same move speed as to avoid different sets of pixels from the background image from peeking throught. This avoids an unpleasent flashing effect, although it would also limit my cursor movement speed. To future-proof this constistant movemnt of the flashlight cutout mask fo when I implement dynamic movement speed on the cursor: I made a function that rounds the cursor position to the nearest multiple of the consistant move speed (in my case 3 pixels) </p>
             <img src="images/DevLog_PD-Horror_4/lightMaskSliding.gif" style="width:100%" >
 
-            <h2>The Project Moving Forward</h2>
+            <h2>The Project Moving Forward:</h2>
             <p>
                 The shooting gallary still has a long way to go before being fully playable. The main thing missing is a propper monster behaviour, and shooting mechanics. This will be my next major step in the creation of the game.
 
